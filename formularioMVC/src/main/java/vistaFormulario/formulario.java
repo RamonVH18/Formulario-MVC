@@ -7,6 +7,7 @@ package vistaFormulario;
 import Controlador.Controlador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -94,17 +95,20 @@ public class formulario extends javax.swing.JFrame {
     public void generarPanelCentral() {
         JPanel panelCentral = new JPanel(new BorderLayout());
         generarPanelIzquierdo(panelCentral);
+        add(panelCentral);
     }
     
     public void generarPanelIzquierdo(JPanel panelCentral) {
         JPanel panelIzquierdo = new JPanel();
-        JTextField campoNombre = new JTextField();
-        JTextField campoApellido = new JTextField();
-        JTextField campoCorreo = new JTextField();
+        JTextField campoNombre = new JTextField(20);
+        JTextField campoApellido = new JTextField(20);
+        JTextField campoCorreo = new JTextField(20);
         panelIzquierdo.add(campoNombre);
         panelIzquierdo.add(campoApellido);
         panelIzquierdo.add(campoCorreo);
         panelCentral.add(panelIzquierdo, BorderLayout.WEST);
+        JButton botonAgregar = new JButton("Agregar Usuario");
+        panelCentral.add(botonAgregar);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
