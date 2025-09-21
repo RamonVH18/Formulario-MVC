@@ -26,8 +26,9 @@ public class Controlador {
         return controlador;
     }
     
-    public void registrarUsuario(Usuario usuario){
-     
+    public void registrarUsuario(String nombre, String apellido, String email){
+     Usuario user = new Usuario(nombre, apellido, email);
+     modelo.registrarUsuario(user);
     }
     
     

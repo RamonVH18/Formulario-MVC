@@ -121,7 +121,7 @@ public class formulario extends javax.swing.JFrame {
         panelCentral.add(panelIzquierdo, BorderLayout.WEST);
         JButton botonAgregar = new JButton("Agregar Usuario");
         botonAgregar.addActionListener((ActionEvent e) -> {
-            
+            controlador.registrarUsuario(campoNombre.getText(), campoApellido.getText(), campoCorreo.getText());
         });
         panelCentral.add(botonAgregar);
     }
