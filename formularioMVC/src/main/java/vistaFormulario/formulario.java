@@ -19,11 +19,12 @@ import javax.swing.WindowConstants;
 public class formulario extends javax.swing.JFrame {
 
     public Dimension tamañoFrame = new Dimension(1200, 800);
-    public Controlador controlador = Controlador.getControlador();
+    public Controlador controlador;
     /**
      * Creates new form formulario
      */
     public formulario() {
+        controlador = new Controlador();
         setSize(tamañoFrame);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

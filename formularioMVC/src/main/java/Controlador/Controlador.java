@@ -5,7 +5,7 @@
 package Controlador;
 
 import Entidades.Usuario;
-import java.util.List;
+import Modelo.Modelo;
 import java.util.LinkedList;
 
 /**
@@ -13,12 +13,11 @@ import java.util.LinkedList;
  * @author 52644
  */
 public class Controlador {
-    
-    private List<Usuario> usuarios;
+    private Modelo modelo;
     private static Controlador controlador;
     
-    private Controlador() {
-        usuarios = new LinkedList<>();
+    public Controlador() {
+        modelo = Modelo.getModelo();
     }
     
     public static Controlador getControlador(){
@@ -28,7 +27,7 @@ public class Controlador {
     }
     
     public void registrarUsuario(Usuario usuario){
-        usuarios.add(usuario);
+     
     }
     
     
