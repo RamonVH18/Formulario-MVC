@@ -123,9 +123,15 @@ public class formulario extends javax.swing.JFrame {
         botonAgregar.addActionListener((ActionEvent e) -> {
             controlador.registrarUsuario(campoNombre.getText(), campoApellido.getText(), campoCorreo.getText());
         });
-        panelCentral.add(botonAgregar);
+        
+        panelIzquierdo.add(botonAgregar);
     }
     
+    public void generarPanelDerecho(JPanel panelCentral) { 
+        JPanel panelDerecho = new JPanel(new GridLayout(0, 1));
+        panelCentral.add(panelDerecho);
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
