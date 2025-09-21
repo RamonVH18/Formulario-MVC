@@ -4,17 +4,31 @@
  */
 package vistaFormulario;
 
+import Controlador.Controlador;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+
 /**
  *
  * @author Ramon Valencia
  */
 public class formulario extends javax.swing.JFrame {
 
+    public Dimension tamañoFrame = new Dimension(1200, 800);
+    public Controlador controlador = Controlador.getControlador();
     /**
      * Creates new form formulario
      */
     public formulario() {
-        initComponents();
+        setSize(tamañoFrame);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        generarPanelCentral();
+        repaint();
+        revalidate();
     }
 
     /**
@@ -32,11 +46,11 @@ public class formulario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 558, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 668, Short.MAX_VALUE)
         );
 
         pack();
@@ -76,7 +90,22 @@ public class formulario extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void generarPanelCentral() {
+        JPanel panelCentral = new JPanel(new BorderLayout());
+        generarPanelIzquierdo(panelCentral);
+    }
+    
+    public void generarPanelIzquierdo(JPanel panelCentral) {
+        JPanel panelIzquierdo = new JPanel();
+        JTextField campoNombre = new JTextField();
+        JTextField campoApellido = new JTextField();
+        JTextField campoCorreo = new JTextField();
+        panelIzquierdo.add(campoNombre);
+        panelIzquierdo.add(campoApellido);
+        panelIzquierdo.add(campoCorreo);
+        panelCentral.add(panelIzquierdo, BorderLayout.WEST);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
