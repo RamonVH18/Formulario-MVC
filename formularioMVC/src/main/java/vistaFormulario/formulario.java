@@ -6,8 +6,12 @@ package vistaFormulario;
 
 import Controlador.Controlador;
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -100,17 +104,29 @@ public class formulario extends javax.swing.JFrame {
     }
     
     public void generarPanelIzquierdo(JPanel panelCentral) {
-        JPanel panelIzquierdo = new JPanel();
+        JPanel panelIzquierdo = new JPanel(new GridLayout(0, 2));
+        JLabel labelNombre = new JLabel("Nombre: ");
         JTextField campoNombre = new JTextField(20);
+        JLabel labelApellido = new JLabel("Apellido: ");
         JTextField campoApellido = new JTextField(20);
+        JLabel labelCorreo = new JLabel("Correo: ");
         JTextField campoCorreo = new JTextField(20);
+        panelIzquierdo.add(labelNombre);
         panelIzquierdo.add(campoNombre);
+        panelIzquierdo.add(labelApellido);
         panelIzquierdo.add(campoApellido);
+        panelIzquierdo.add(labelCorreo);
         panelIzquierdo.add(campoCorreo);
+        
         panelCentral.add(panelIzquierdo, BorderLayout.WEST);
         JButton botonAgregar = new JButton("Agregar Usuario");
+        botonAgregar.addActionListener((ActionEvent e) -> {
+            
+        });
         panelCentral.add(botonAgregar);
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
