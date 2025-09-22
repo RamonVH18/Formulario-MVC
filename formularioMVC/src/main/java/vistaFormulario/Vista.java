@@ -1,28 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vistaFormulario;
 
 import Controlador.Controlador;
+import Entidades.Usuario;
+import Modelo.UsuarioModelo;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import observer.ISubscriber;
 
 /**
  *
  * @author Ximena
  */
-public class formatoFormulario extends javax.swing.JFrame {
-    // Agregar patrón observer al resto del código
-    
+public class Vista extends javax.swing.JFrame implements ISubscriber{
     public Controlador controlador;
 
     /**
      * Creates new form form
      */
-    public formatoFormulario() {
+    public Vista() {
         controlador = new Controlador();
+        
+        //La vista se subscribe al UsuarioModelo
+        controlador.getModelo().subscribirse(this);
+        
         initComponents();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -200,42 +201,6 @@ public class formatoFormulario extends javax.swing.JFrame {
         registrarUsuario();
     }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formatoFormulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formatoFormulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formatoFormulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formatoFormulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new formatoFormulario().setVisible(true);
-            }
-        });
-    }
-    
     private boolean validarCampos() {
         String nombre = txtNombre.getText().trim();
         String apellido = txtApellido.getText().trim();
@@ -260,8 +225,6 @@ public class formatoFormulario extends javax.swing.JFrame {
         
         // Registrar en el controlador
         controlador.registrarUsuario(nombre, apellido, correo);
-        // Añadir a la tabla
-        agregarUsuarioTabla(nombre, apellido, correo);
         
         limpiarCampos();
     }
@@ -293,4 +256,9 @@ public class formatoFormulario extends javax.swing.JFrame {
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Usuario usuario) {
+        agregarUsuarioTabla(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+    }
 }

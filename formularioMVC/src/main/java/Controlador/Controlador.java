@@ -1,23 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import Entidades.Usuario;
-import Modelo.Modelo;
-import java.util.LinkedList;
+import Modelo.UsuarioModelo;
 
 /**
  *
  * @author 52644
  */
 public class Controlador {
-    private Modelo modelo;
+    private UsuarioModelo modelo;
     private static Controlador controlador;
     
     public Controlador() {
-        modelo = Modelo.getModelo();
+        modelo = UsuarioModelo.getModelo();
     }
     
     public static Controlador getControlador(){
@@ -30,7 +25,8 @@ public class Controlador {
      Usuario user = new Usuario(nombre, apellido, email);
      modelo.registrarUsuario(user);
     }
-    
-    
-    
+
+    public UsuarioModelo getModelo() {
+        return modelo;
+    }
 }
